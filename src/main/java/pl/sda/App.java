@@ -12,16 +12,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        Location location = new Location();
-        //https://api.apixu.com/v1/current.json?key=2cb8d8e890ff4b6c82581410191307&q=Paris
-
         WeatherService weatherService = new WeatherService(
                 "https://api.apixu.com/v1/current.json",
                 "2cb8d8e890ff4b6c82581410191307"
         );
 
         Current current = weatherService.getCityWeather("Torun");
-        current.getTemp_c();
+        System.out.println("Temperature: " + current.getTemp_c());
+        System.out.println("Pressure:    " + current.getPressure_mb());
+        System.out.println("Wind kph:    " + current.getWind_kph());
+        System.out.println("Humidity:    " + current.getHumidity());
     }
 }
