@@ -22,6 +22,8 @@ public class Current {
     private String wind_dir;
     private double pressure_mb;
     private double pressure_in;
+    private double precip_mm;
+    private double precip_in;
     private double humidity;
     private double cloud;
     private double feelslike_c;

@@ -42,14 +42,12 @@ public class WeatherService {
         String country = jsonObject.get("country").toString();
         String name = jsonObject.get("name").toString();
 
-        Location location = Location.builder()
+
+        return Location.builder()
                 .lat(Double.parseDouble(lat))
                 .lon(Double.parseDouble(lon))
                 .country(country)
                 .name(name).build();
-
-
-        return location;
     }
 
     public Current getCityWeather() {
