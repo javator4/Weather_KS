@@ -1,7 +1,10 @@
-package pl.sda.model;
+package pl.sda;
 
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
+import pl.sda.model.Current;
+import pl.sda.model.Location;
+import pl.sda.model.Weather;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +34,27 @@ public class WeatherService {
 
         }
         return this;
+    }
+
+    public String getJSONString(String city) {
+        if(this.data.isEmpty()) {
+            this.finalURL = finalURL + "&q=" + city;
+            try {
+                this.data = IOUtils.toString(new URL(this.finalURL),
+                        Charset.forName("UTF-8"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return data;
+    }
+    public Weather getWeather(){
+        Weather weather = new Weather();
+
+        weather.setCurrent(getCityWeather());
+        weather.setLocation(getLocationObject());
+        return weather;
     }
 
     public Location getLocationObject(){
