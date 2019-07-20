@@ -68,6 +68,13 @@ public class App
         System.out.println(faster.getWeather().getCurrent().getWind_kph());
         System.out.println(org.getWeather().getCurrent().getWind_kph());
 
+        JsonDataFaster jsonDataFaster = new JsonDataFaster();
+        jsonDataFaster.setUrl("https://api.apixu.com/v1/current.json");
+        jsonDataFaster.setKey("2cb8d8e890ff4b6c82581410191307");
+        jsonDataFaster.setCity("Warszawa");
+        jsonDataFaster.build();
+        Weather weatherJSON = jsonDataFaster.getWeather();
 
+        System.out.println(weatherJSON);
     }
 }
